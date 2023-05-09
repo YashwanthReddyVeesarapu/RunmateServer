@@ -1,5 +1,5 @@
 import express from "express";
-import session from "express-session";
+import session, { MemoryStore } from "express-session";
 import constructRoutes from "./routes/index.js";
 
 import http from "http";
@@ -16,6 +16,9 @@ app.use(
     secret: "your-secret-key",
     resave: false,
     saveUninitialized: false,
+    store: new MemoryStore({
+      checkPeriod: 86400000, // prune expired entries every 24h
+    }),
   })
 );
 
