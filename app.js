@@ -9,18 +9,13 @@ import { Server } from "socket.io";
 
 const app = express();
 
-app.use(cors());
 app.use(express.json());
 
 app.use(
   session({
-    name: "AuthCookie",
     secret: "your-secret-key",
     resave: false,
     saveUninitialized: false,
-    cookie: {
-      maxAge: 3600000,
-    },
   })
 );
 
@@ -68,7 +63,7 @@ constructRoutes(app);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "http://localhost:3000",
+    origin: "https://runmate.vercel.app/",
     methods: ["GET", "POST"],
   },
 });
