@@ -66,7 +66,7 @@ constructRoutes(app);
 const server = http.createServer(app);
 const io = new Server(server, {
   cors: {
-    origin: "https://runmate.vercel.app/",
+    origin: ["https://runmate.vercel.app/", "https://runn-mate.web.app"],
     methods: ["GET", "POST"],
   },
 });
