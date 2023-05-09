@@ -7,9 +7,9 @@ import http from "http";
 import cors from "cors";
 import { Server } from "socket.io";
 
-app.use(cors());
-
 const app = express();
+
+app.use(cors());
 
 app.use(express.json());
 
@@ -18,9 +18,6 @@ app.use(
     secret: "your-secret-key",
     resave: false,
     saveUninitialized: false,
-    store: new MemoryStore({
-      checkPeriod: 86400000, // prune expired entries every 24h
-    }),
   })
 );
 
